@@ -15,7 +15,7 @@ sg_outbound_ports = [
 ]
 
 sg_tags = {
-  Name = "nginx-sg"
+  Name = "nginx1-sg"
 }
 
 #--------------------------------Launch Template ----------------------------------#
@@ -30,7 +30,7 @@ private_key_rsa_bits  = 4096
 template_name        = "nginx-teamplate"
 template_description = "Template for Dev-nginx"
 instance_type        = "t2.micro"
-instance_keypair     = "nginxKey"
+instance_keypair     = "nginx1Key"
 template_subnet_id   = "subnet-0bc16c9e01059b4ca"
 
 #--------------------------Configure Auto Scaling group ---------------------------#
