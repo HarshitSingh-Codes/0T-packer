@@ -8,7 +8,7 @@ packer {
 }
 
 source "amazon-ebs" "nginx-ami" {
-  ami_name      = "nginx-v1-ami"
+  ami_name      = "nginx-v2-ami"
   instance_type = "t2.micro"
   region        = "us-east-2"
   source_ami_filter {
@@ -24,7 +24,7 @@ source "amazon-ebs" "nginx-ami" {
 }
 
 build {
-  name = "nginx-v1"
+  name = "nginx-v2"
   sources = [
     "source.amazon-ebs.nginx-ami"
   ]
@@ -37,7 +37,7 @@ build {
   provisioner "file" {
     source      = "./index.html"
     destination = "/var/www/html/index.nginx-debian.html"
-    
+
   }
   provisioner "shell" {
 
