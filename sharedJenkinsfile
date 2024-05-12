@@ -5,6 +5,8 @@ properties([
     parameters([
         booleanParam(name: 'runPacker', defaultValue: false, description: 'Run Packer'),
         string(name: 'packerFileName', defaultValue: 'nginxV2.pkr.hcl', description: 'Packer file name'),
+        booleanParam(name: 'runTerraform', defaultValue: false, description: 'Run Terraform'),
+        string(name: 'terraformDirPath', defaultValue: 'launch-template/', description: 'terraform code directory path'),        
     ])
 ])
 node {
