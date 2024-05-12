@@ -1,10 +1,12 @@
 @Library("opstree-shared-library") _
 
 def nginx = new org.opstree.template.nginx.nginx()
-parameters {
+properties([
+    parameters([
         booleanParam(name: 'runPacker', defaultValue: false, description: 'Run Packer')
         string(name: 'packerFileName', defaultValue: '', description: 'Packer file name')
-}
+    ])
+])
 node {
     
     def url = 'https://github.com/HarshitSingh-Codes/0T-packer.git'
