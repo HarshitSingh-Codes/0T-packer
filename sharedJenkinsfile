@@ -3,8 +3,8 @@
 def nginx = new org.opstree.template.nginx.nginx()
 properties([
     parameters([
-        booleanParam(name: 'runPacker', defaultValue: false, description: 'Run Packer')
-        string(name: 'packerFileName', defaultValue: '', description: 'Packer file name')
+        booleanParam(name: 'runPacker', defaultValue: false, description: 'Run Packer'),
+        string(name: 'packerFileName', defaultValue: '', description: 'Packer file name'),
     ])
 ])
 node {
