@@ -6,6 +6,9 @@ pipeline {
         string (defaultValue: 'nginx-v1-ami', description: 'AMI name to use in the Launch Template ', name: 'amiName')
 
     }
+    environment { 
+        TF_VAR_ami_name = params.amiName
+    }
     
     stages {
         stage('Checkout') {
@@ -21,13 +24,6 @@ pipeline {
             }
         }
         
-        stage('Export AMI NAME var') {
-            steps {
-                script {
-                    sh 'export TF_VAR_ami_name=["+ params.amiName +"'
-                }
-            }
-        }
         stage('Terraform Plan') {
             steps {
                 script {
