@@ -38,7 +38,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    sh 'cd launch-template/ && terraform plan -var ami_name="params.amiName"'
+                    sh 'cd launch-template/ && terraform plan -var ami_name="' + params.amiName + '"'
                 }
             }
         }
@@ -67,9 +67,9 @@ pipeline {
             steps {
                 script {
                     if (params.ACTION == 'Apply') {
-                        sh 'cd launch-template/ && terraform apply -var ami_name="params.amiName" -auto-approve'
+                        sh 'cd launch-template/ && terraform apply -var ami_name="' + params.amiName + '" -auto-approve'
                     } else if (params.ACTION == 'Destroy') {
-                        sh 'cd launch-template/ && terraform destroy -var ami_name="params.amiName" -auto-approve'
+                        sh 'cd launch-template/ && terraform destroy -var ami_name="' + params.amiName + '" -auto-approve'
                     }
                 }
             }
