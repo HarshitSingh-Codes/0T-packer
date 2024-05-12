@@ -9,6 +9,8 @@ pipeline {
     
     parameters {
         choice(name: 'ACTION', choices: ['Apply', 'Destroy'], description: 'Choose to apply or destroy the infrastructure')
+        string (defaultValue: 'nginx-v1-ami', description: 'AMI name', name: 'amiName'),
+
     }
     
     stages {
@@ -36,7 +38,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    sh 'cd launch-template/ && terraform plan'
+                    sh 'cd launch-template/ && terraform plan -var ami_name="params.nginx-v1-ami"'
                 }
             }
         }
@@ -65,9 +67,9 @@ pipeline {
             steps {
                 script {
                     if (params.ACTION == 'Apply') {
-                        sh 'tcd launch-template/ && erraform apply -auto-approve'
+                        sh 'cd launch-template/ && terraform apply -var ami_name="params.nginx-v1-ami" -auto-approve'
                     } else if (params.ACTION == 'Destroy') {
-                        sh 'cd launch-template/ && terraform destroy -auto-approve'
+                        sh 'cd launch-template/ && terraform destroy -var ami_name="params.nginx-v1-ami" -auto-approve'
                     }
                 }
             }
