@@ -7,7 +7,7 @@ pipeline {
 
     }
     environment { 
-        TF_VAR_ami_name = params.amiName
+        TF_VAR_ami_name = "'${params.amiName}'"
     }
     
     stages {
