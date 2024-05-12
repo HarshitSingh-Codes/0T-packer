@@ -7,7 +7,7 @@ pipeline {
 
     }
     environment { 
-        TF_VAR_ami_name = "${params.amiName}"
+        AMI_NAME = "${params.amiName}"
     }
     
     stages {
@@ -27,8 +27,8 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    sh 'echo $TF_VAR_ami_name'
-                    sh 'cd launch-template/ && terraform plan'
+                    sh 'echo $AMI_NAME'
+                    sh 'cd launch-template/ && terraform plan -var ami_name=$AMI_NAME'
                 }
             }
         }
