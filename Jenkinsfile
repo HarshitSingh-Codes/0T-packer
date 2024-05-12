@@ -57,7 +57,7 @@ pipeline {
                     if (params.ACTION == 'Apply') {
                         sh 'cd launch-template/ && terraform apply -var ami_name=$AMI_NAME -auto-approve'
                     } else if (params.ACTION == 'Destroy') {
-                        sh 'cd launch-template/ && terraform destroy -var ami_name=$AMI_NAME -auto-approve'
+                        sh 'cd launch-template/ && terraform destroy -auto-approve'
                     }
                 }
             }
