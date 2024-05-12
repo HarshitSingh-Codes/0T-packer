@@ -8,8 +8,8 @@ pipeline {
     // }
     
     parameters {
-        choice(name: 'ACTION', choices: ['Apply', 'Destroy'], description: 'Choose to apply or destroy the infrastructure'),
-        string (defaultValue: 'nginx-v1-ami', description: 'AMI name', name: 'amiName'),
+        choice(name: 'ACTION', choices: ['Apply', 'Destroy'], description: 'Choose to apply or destroy the infrastructure')
+        string (defaultValue: 'nginx-v1-ami', description: 'AMI name to use in the Launch Template ', name: 'amiName')
 
     }
     
