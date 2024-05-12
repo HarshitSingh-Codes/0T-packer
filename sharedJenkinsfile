@@ -3,10 +3,11 @@
 def nginx = new org.opstree.template.nginx.nginx()
 properties([
     parameters([
-        booleanParam(name: 'runPacker', defaultValue: false, description: 'Run Packer'),
+        choice(name: 'action', choices: ['apply', 'destroy'], description: 'Choose terraform action to perform'),
+        booleanParam(name: 'runPacker', defaultValue: false, description: 'Run packer'),
         string(name: 'packerFileName', defaultValue: 'nginxV2.pkr.hcl', description: 'Packer file name'),
-        booleanParam(name: 'runTerraform', defaultValue: false, description: 'Run Terraform'),
-        string(name: 'terraformDirPath', defaultValue: 'launch-template/', description: 'terraform code directory path'),        
+        booleanParam(name: 'runTerraform', defaultValue: false, description: 'Run terraform'),
+        string(name: 'terraformDirPath', defaultValue: 'launch-template/', description: 'Terraform code directory path'),        
     ])
 ])
 node {
@@ -15,6 +16,6 @@ node {
     def creds = 'github-token'
     def branch = 'nginxV1.0'
     
-    nginx.call(url, creds, branch, params.runPacker, params.packerFileName, params.runTerraform, params.terraformDirPath)
+    nginx.call(url, creds, branch, params.runPacker, params.packerFileName, params.runTerraform, params.terraformDirPath, params.action)
     
 }
