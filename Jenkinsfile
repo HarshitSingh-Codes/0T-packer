@@ -27,6 +27,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
+                    sh 'echo $TF_VAR_ami_name'
                     sh 'cd launch-template/ && terraform plan'
                 }
             }
