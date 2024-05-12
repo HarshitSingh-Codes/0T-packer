@@ -7,7 +7,8 @@ properties([
         booleanParam(name: 'runPacker', defaultValue: false, description: 'Run packer'),
         string(name: 'packerFileName', defaultValue: 'nginxV2.pkr.hcl', description: 'Packer file name'),
         booleanParam(name: 'runTerraform', defaultValue: false, description: 'Run terraform'),
-        string(name: 'terraformDirPath', defaultValue: 'launch-template/', description: 'Terraform code directory path'),        
+        string(name: 'terraformDirPath', defaultValue: 'launch-template/', description: 'Terraform code directory path'),
+        string (name: 'amiName', defaultValue: 'nginx-v1-ami', description: 'AMI name to use in the Launch Template'),
     ])
 ])
 node {
@@ -16,6 +17,6 @@ node {
     def creds = 'github-token'
     def branch = 'nginxV1.0'
     
-    nginx.call(url, creds, branch, params.runPacker, params.packerFileName, params.runTerraform, params.terraformDirPath, params.action)
+    nginx.call(url, creds, branch, params.runPacker, params.packerFileName, params.runTerraform, params.terraformDirPath, params.action, params.amiName)
     
 }
