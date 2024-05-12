@@ -42,7 +42,6 @@ pipeline {
                 }
             }
         }
-        
         stage('Review and Approve Apply') {
             when {
                 expression { params.ACTION == 'Apply' }
