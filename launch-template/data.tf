@@ -1,10 +1,16 @@
+variable "ami_name" {
+  description = "Name tag for the security group"
+  type        = string
+  default     = "nginx-v1-ami"
+}
+
 data "aws_ami" "nginx-ami" {
   most_recent = true
   owners      = ["self"]
 
   filter {
     name   = "name"
-    values = ["nginx-v2-ami"]
+    values = [var.ami_name]
   }
   filter {
     name   = "root-device-type"

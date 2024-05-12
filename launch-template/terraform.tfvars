@@ -1,3 +1,5 @@
+ami_name = "nginx-v1-ami"
+
 #---------------------------------Security Group ----------------------------------#
 
 sg_name        = "nginx-sg"
