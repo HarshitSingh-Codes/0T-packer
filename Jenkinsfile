@@ -1,11 +1,11 @@
 pipeline {
     agent any
     
-    environment {
-        AWS_ACCESS_KEY_ID     = credentials('Frontend Creds')
-        AWS_SECRET_ACCESS_KEY = credentials('Frontend Creds')
-        TF_CLI_ARGS           = '-input=false'
-    }
+    // environment {
+    //     AWS_ACCESS_KEY_ID     = credentials('Frontend Creds')
+    //     AWS_SECRET_ACCESS_KEY = credentials('Frontend Creds')
+    //     TF_CLI_ARGS           = '-input=false'
+    // }
     
     parameters {
         choice(name: 'ACTION', choices: ['Apply', 'Destroy'], description: 'Choose to apply or destroy the infrastructure')
@@ -14,21 +14,21 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'GitHub Credentials for DSL PIpleline', url: 'https://github.com/CodeOps-Hub/Terraform.git'
-            }
+                checkout scmGit(branches: [[name: 'nginxV1.0']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/HarshitSingh-Codes/0T-packer.git']])            }
         }
         
-        stage('Copy Terraform Files') {
-            steps {
-                // Copy or move specific files from the repository to Jenkins workspace
-                sh 'cp Dev_Infra/Static_Tf/Frontend/* .'
-            }
-        }
+        // stage('Copy Terraform Files') {
+        //     steps {
+        //         // Copy or move specific files from the repository to Jenkins workspace
+                
+        //         sh 'cd Dev_Infra/Static_Tf/Frontend/* .'
+        //     }
+        // }
         
         stage('Terraform Init') {
             steps {
                 script {
-                    sh 'terraform init'
+                    sh 'cd launch-template/ && terraform init'
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    sh 'terraform plan'
+                    sh 'cd launch-template/ && terraform plan'
                 }
             }
         }
@@ -65,23 +65,13 @@ pipeline {
             steps {
                 script {
                     if (params.ACTION == 'Apply') {
-                        sh 'terraform apply -auto-approve'
+                        sh 'tcd launch-template/ && erraform apply -auto-approve'
                     } else if (params.ACTION == 'Destroy') {
-                        sh 'terraform destroy -auto-approve'
+                        sh 'cd launch-template/ && terraform destroy -auto-approve'
                     }
                 }
             }
         }
     }
-    
-    post {
-        success {
-            echo 'Terraform operation successful!'
-            archiveArtifacts artifacts: '*.pem', followSymlinks: false
-        }
-        failure {
-            echo 'Terraform operation failed!'
-            cleanWs()
-        }
-    }
+
 }
