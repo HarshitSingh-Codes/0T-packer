@@ -14,16 +14,16 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'GitHub Credentials for DSL PIpleline', url: 'https://github.com/HarshitSingh-Codes/0T-packer.git'
-            }
+                checkout scmGit(branches: [[name: 'nginxV1.0']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/HarshitSingh-Codes/0T-packer.git']])            }
         }
         
-        stage('Copy Terraform Files') {
-            steps {
-                // Copy or move specific files from the repository to Jenkins workspace
-                sh 'cp Dev_Infra/Static_Tf/Frontend/* .'
-            }
-        }
+        // stage('Copy Terraform Files') {
+        //     steps {
+        //         // Copy or move specific files from the repository to Jenkins workspace
+                
+        //         sh 'cd Dev_Infra/Static_Tf/Frontend/* .'
+        //     }
+        // }
         
         stage('Terraform Init') {
             steps {

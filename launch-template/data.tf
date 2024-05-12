@@ -4,7 +4,7 @@ data "aws_ami" "nginx-ami" {
 
   filter {
     name   = "name"
-    values = ["nginx-v1-ami"]
+    values = ["nginx-v2-ami"]
   }
   filter {
     name   = "root-device-type"
