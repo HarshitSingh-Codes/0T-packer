@@ -1,0 +1,13 @@
+@Library("opstree-shared-library") _
+
+def nginx = new org.avengers.template.nginx.nginx()
+
+node {
+    
+    def url = 'https://github.com/HarshitSingh-Codes/0T-packer.git'
+    def creds = 'github-token'
+    def branch = 'nginxV1.0'
+    
+    nginx.call(url, creds, branch)
+    
+}
