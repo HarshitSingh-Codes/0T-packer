@@ -21,10 +21,17 @@ pipeline {
             }
         }
         
+        stage('Export AMI NAME var') {
+            steps {
+                script {
+                    sh 'export TF_VAR_ami_name=${params.amiName}'
+                }
+            }
+        }
         stage('Terraform Plan') {
             steps {
                 script {
-                    sh "cd launch-template/ && terraform plan -e 'ami_name=${params.amiName}'"
+                    sh 'cd launch-template/ && terraform plan'
                 }
             }
         }
