@@ -1,4 +1,4 @@
-# ami_name = ["nginx-v1-ami"]
+ami_name = "nginx-v1-ami"
 
 #---------------------------------Security Group ----------------------------------#
 
@@ -37,10 +37,10 @@ template_subnet_id   = "subnet-0bc16c9e01059b4ca"
 
 #--------------------------Configure Auto Scaling group ---------------------------#
 
-asg_name = "nginx-asg"
-asg_min_size               = 1
-asg_max_size               = 3
-asg_desired_capacity       = 2
+asg_name             = "nginx-asg"
+asg_min_size         = 1
+asg_max_size         = 3
+asg_desired_capacity = 2
 
 #---------------------------- Auto Scaling Policies -------------------------------#
 

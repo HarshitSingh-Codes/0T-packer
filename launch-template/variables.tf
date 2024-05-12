@@ -35,7 +35,7 @@ variable "sg_tags" {
   description = "Tags for Security Group"
   type        = map(string)
   default = {
-    Name       = "nginx-sg"
+    Name = "nginx-sg"
   }
 }
 
@@ -95,19 +95,19 @@ variable "asg_name" {
 variable "asg_min_size" {
   description = "The minimum number of instances in the ASG"
   type        = number
-  default     = 1
+  # default     = 1
 }
 
 variable "asg_max_size" {
   description = "The maximum number of instances in the ASG"
   type        = number
-  default     = 2
+  # default     = 3
 }
 
 variable "asg_desired_capacity" {
   description = "The desired number of instances in the ASG"
   type        = number
-  default     = 1
+  # default     = 2
 }
 
 #---------------------------- Auto Scaling Policies -------------------------------#
