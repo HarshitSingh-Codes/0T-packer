@@ -1,6 +1,6 @@
 @Library("opstree-shared-library") _
 
-def nginx = new org.avengers.template.nginx.nginx()
+def nginx = new org.opstree.template.nginx.nginx()
 
 node {
     
