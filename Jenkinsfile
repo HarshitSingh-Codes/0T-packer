@@ -58,9 +58,9 @@ pipeline {
             steps {
                 script {
                     if (params.ACTION == 'Apply') {
-                        sh "cd launch-template/ && terraform apply -e 'ami_name=${params.amiName}' -auto-approve"
+                        sh "cd launch-template/ && terraform apply -auto-approve"
                     } else if (params.ACTION == 'Destroy') {
-                        sh "cd launch-template/ && terraform destroy -e 'ami_name=${params.amiName}' -auto-approve"
+                        sh "cd launch-template/ && terraform destroy -auto-approve"
                     }
                 }
             }
