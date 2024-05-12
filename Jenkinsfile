@@ -24,7 +24,7 @@ pipeline {
         stage('Export AMI NAME var') {
             steps {
                 script {
-                    sh 'export TF_VAR_ami_name=${params.amiName}'
+                    sh 'export TF_VAR_ami_name=["+ params.amiName +"'
                 }
             }
         }
