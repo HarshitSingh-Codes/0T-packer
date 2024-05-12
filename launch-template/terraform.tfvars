@@ -1,4 +1,4 @@
-ami_name = "nginx-v1-ami"
+ami_name = ["nginx-v1-ami"]
 
 #---------------------------------Security Group ----------------------------------#
 
