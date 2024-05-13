@@ -1,4 +1,4 @@
-@Library("opstree-shared-library") _
+@Library("opstree-shared-library@packer+aws-cli") _
 
 def nginx = new org.opstree.template.nginx.nginx()
 properties([
