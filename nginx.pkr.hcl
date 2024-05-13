@@ -7,13 +7,36 @@ packer {
   }
 }
 
+variable "golden_ami_name" {
+  type    = string
+  default = "golden-ami"
+}
+
+variable "image_name" {
+  type    = string
+  default = "nginx"
+}
+
+variable "image_version" {
+  type    = string
+  default = "0.1"
+}
+
+variable "filePath" {
+  type    = string
+  default = "./index1.html"
+}
+locals {
+  # Ids for multiple sets of EC2 instances, merged together
+  ami_full_name = "${var.image_name}${var.image_version}"
+}
 source "amazon-ebs" "nginx-ami" {
-  ami_name      = "nginx-v1-ami"
+  ami_name      = local.ami_full_name 
   instance_type = "t2.micro"
   region        = "us-east-2"
   source_ami_filter {
     filters = {
-      name                = "golden-ami"
+      name                = var.golden_ami_name
       root-device-type    = "ebs"
       virtualization-type = "hvm"
     }
@@ -24,7 +47,7 @@ source "amazon-ebs" "nginx-ami" {
 }
 
 build {
-  name = "nginx-v1"
+  name = "nginx"
   sources = [
     "source.amazon-ebs.nginx-ami"
   ]
@@ -35,9 +58,9 @@ build {
   }
 
   provisioner "file" {
-    source      = "./index1.html"
+    source      = var.filePath
     destination = "/var/www/html/index.nginx-debian.html"
-    
+
   }
   provisioner "shell" {
 
@@ -47,5 +70,12 @@ build {
       "sudo systemctl restart nginx.service",
       "sudo systemctl status nginx.service",
     ]
+  }
+  post-processor "manifest" {
+    output = "manifest.json"
+    strip_path = true
+    custom_data = {
+      ami_name = local.ami_full_name
+    }
   }
 }
