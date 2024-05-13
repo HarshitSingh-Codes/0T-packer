@@ -16,7 +16,8 @@ node {
     def url = 'https://github.com/HarshitSingh-Codes/0T-packer.git'
     def creds = 'github-token'
     def branch = 'nginxV1.0'
+    def amiVersion = '0.5'
     
-    nginx.call(url, creds, branch, params.runPacker, params.packerFileName, params.runTerraform, params.terraformDirPath, params.action, params.amiName)
+    nginx.call(url, creds, branch, params.runPacker, params.packerFileName, params.runTerraform, params.terraformDirPath, params.action, params.amiName, amiVersion)
     
 }
