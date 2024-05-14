@@ -10,7 +10,7 @@ node {
     def packerFileName = '.'
     def amiVersion = '0.6'
     def templateID = 'lt-0e0cf0cd693670427'
-    def asgConfig = 'ASG-config.json'
+    def asgConfig = 'config.json'
     
     nginx.checkout(url, creds, branch)
 
