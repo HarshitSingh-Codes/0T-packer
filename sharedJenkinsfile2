@@ -10,7 +10,7 @@ node {
     def creds = 'github-token'
     def branch = 'nginxV1.0'
     def packerFileName = '.'
-    def amiVersion = '0.5'
+    def amiVersion = '0.6'
     
     // runPacker.call(url, creds, branch, packerFileName, amiVersion)
 
