@@ -11,12 +11,13 @@ node {
     def amiVersion = '0.6'
     def templateID = 'lt-0e0cf0cd693670427'
     def asgConfig = 'config.json'
-    
+    def sourceVersion = '4'
+
     nginx.checkout(url, creds, branch)
 
     // nginx.runPacker(packerFileName, amiVersion)
 
-    // nginx.updateLaunchTemplate(templateID)
+    nginx.updateLaunchTemplate(templateID)
 
     nginx.instanceRefresh(asgConfig)
 }
