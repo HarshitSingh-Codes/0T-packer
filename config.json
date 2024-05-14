@@ -1,5 +1,6 @@
 {
     "AutoScalingGroupName": "nginx-asg",
+    "Strategy": "Rolling",
     "DesiredConfiguration": {
         "LaunchTemplate": {
             "LaunchTemplateId": "lt-0e0cf0cd693670427",
