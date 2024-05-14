@@ -17,7 +17,7 @@ node {
 
     // nginx.runPacker(packerFileName, amiVersion)
 
-    nginx.updateLaunchTemplate(templateID)
+    nginx.updateLaunchTemplate(templateID, sourceVersion)
 
     nginx.instanceRefresh(asgConfig)
 }
