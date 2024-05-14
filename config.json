@@ -11,8 +11,6 @@
         "InstanceWarmup": 120,
         "MinHealthyPercentage": 100,
         "SkipMatching": true,
-        "AutoRollback": true,
-        "ScaleInProtectedInstances": Ignore,
-        "StandbyInstances": Terminate
-    },  "MaxHealthyPercentage": 120
+        "MaxHealthyPercentage": 120
+    }
 }
