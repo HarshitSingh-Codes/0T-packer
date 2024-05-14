@@ -1,0 +1,16 @@
+{
+    "AutoScalingGroupName": "nginx-asg",
+    "DesiredConfiguration": {
+        "LaunchTemplate": {
+            "LaunchTemplateId": "lt-0e0cf0cd693670427",
+            "Version": "$Latest"
+        }
+    },
+    "Preferences": {
+        "InstanceWarmup": 60,
+        "MinHealthyPercentage": 50,
+        "AutoRollback": true,
+        "ScaleInProtectedInstances": Ignore,
+        "StandbyInstances": Terminate
+    }
+}
