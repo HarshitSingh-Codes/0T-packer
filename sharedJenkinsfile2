@@ -1,8 +1,6 @@
 @Library("opstree-shared-library@packer+aws-cli") _
 
 def nginx = new org.opstree.template.nginx.nginx()
-// def runPacker = new org.opstree.packer.runPacker() 
-// def gitCheckout = new org.opstree.common.gitCheckout()
 
 node {
     
@@ -12,8 +10,6 @@ node {
     def packerFileName = '.'
     def amiVersion = '0.6'
     
-    // nginx.call(url, creds, branch, packerFileName, amiVersion)
-
     nginx.checkout(url, creds, branch)
 
     nginx.runPacker(packerFileName, amiVersion)
