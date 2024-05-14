@@ -8,10 +8,10 @@ node {
     def creds = 'github-token'
     def branch = 'nginxV1.0'
     def packerFileName = '.'
-    def amiVersion = '0.7'
+    def amiVersion = '0.8'
     def templateID = 'lt-0e0cf0cd693670427'
     def asgConfig = 'config.json'
-    def sourceVersion = '7'
+    def sourceVersion = '8'
 
     nginx.checkout(url, creds, branch)
 
