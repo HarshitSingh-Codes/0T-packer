@@ -1,6 +1,6 @@
 @Library("opstree-shared-library@packer+aws-cli") _
 
-def runPacker = new org.opstree.template.nginx.runPacker()
+def runPacker = new org.opstree.template.nginx.packer()
 // def runPacker = new org.opstree.packer.runPacker() 
 // def gitCheckout = new org.opstree.common.gitCheckout()
 
