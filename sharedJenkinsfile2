@@ -1,0 +1,18 @@
+@Library("opstree-shared-library@packer+aws-cli") _
+
+def runPacker = new org.opstree.packer.runPacker() 
+def gitCheckout = new org.opstree.common.gitCheckout()
+
+node {
+    
+    def url = 'https://github.com/HarshitSingh-Codes/0T-packer.git'
+    def creds = 'github-token'
+    def branch = 'nginxV1.0'
+    def amiVersion = '0.5'
+    
+    // Git Checkout
+    gitCheckout.call(url, creds, branch)
+    
+    nginx.call(url, creds, branch, params.runPacker, params.packerFileName, params.runTerraform, params.terraformDirPath, params.action, params.amiName, amiVersion)
+    
+}
