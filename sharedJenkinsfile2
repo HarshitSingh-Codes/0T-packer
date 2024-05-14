@@ -8,14 +8,14 @@ node {
     def creds = 'github-token'
     def branch = 'nginxV1.0'
     def packerFileName = '.'
-    def amiVersion = '0.6'
+    def amiVersion = '0.7'
     def templateID = 'lt-0e0cf0cd693670427'
     def asgConfig = 'config.json'
-    def sourceVersion = '4'
+    def sourceVersion = '7'
 
     nginx.checkout(url, creds, branch)
 
-    // nginx.runPacker(packerFileName, amiVersion)
+    nginx.runPacker(packerFileName, amiVersion)
 
     nginx.updateLaunchTemplate(templateID, sourceVersion)
 
