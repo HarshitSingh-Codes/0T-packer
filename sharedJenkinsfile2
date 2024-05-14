@@ -9,9 +9,12 @@ node {
     def branch = 'nginxV1.0'
     def packerFileName = '.'
     def amiVersion = '0.6'
+    def templateID = 'lt-0e0cf0cd693670427'
     
     nginx.checkout(url, creds, branch)
 
-    nginx.runPacker(packerFileName, amiVersion)
+    // nginx.runPacker(packerFileName, amiVersion)
+
+    nginx.updateLaunchTemplate(templateID)
 
 }
