@@ -1,6 +1,6 @@
 @Library("opstree-shared-library@packer+aws-cli") _
 
-def nginx = new org.opstree.template.nginx.nginx()
+def opstree = new org.opstree.template.nginx.nginx()
 
 node {
     
@@ -13,11 +13,11 @@ node {
     def asgConfig = 'config.json'
     def sourceVersion = '8'
 
-    nginx.checkout(url, creds, branch)
+    opstree.checkout(url, creds, branch)
 
-    nginx.runPacker(packerFileName, amiVersion)
+    opstree.runPacker(packerFileName, amiVersion)
 
-    nginx.updateLaunchTemplate(templateID, sourceVersion)
+    opstree.updateLaunchTemplate(templateID, sourceVersion)
 
-    nginx.instanceRefresh(asgConfig)
+    opstree.instanceRefresh(asgConfig)
 }
