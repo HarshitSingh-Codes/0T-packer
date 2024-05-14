@@ -12,6 +12,10 @@ node {
     def packerFileName = '.'
     def amiVersion = '0.5'
     
-    runPacker.call(url, creds, branch, packerFileName, amiVersion)
+    // runPacker.call(url, creds, branch, packerFileName, amiVersion)
+
+    runPacker.checkout(url, creds, branch)
+
+    runPacker.runPacker(packerFileName, amiVersion)
 
 }
