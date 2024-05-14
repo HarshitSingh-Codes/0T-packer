@@ -1,16 +1,17 @@
 @Library("opstree-shared-library@packer+aws-cli") _
 
-def runPacker = new org.opstree.packer.runPacker() 
-def gitCheckout = new org.opstree.common.gitCheckout()
+def runPacker = new org.opstree.template.nginx.runPacker()
+// def runPacker = new org.opstree.packer.runPacker() 
+// def gitCheckout = new org.opstree.common.gitCheckout()
 
 node {
     
     def url = 'https://github.com/HarshitSingh-Codes/0T-packer.git'
     def creds = 'github-token'
     def branch = 'nginxV1.0'
+    def packerFileName = '.'
     def amiVersion = '0.5'
     
-    
-    gitCheckout.call(url, creds, branch)
-    
+    runPacker.call(url, creds, branch, packerFileName, amiVersion)
+
 }
