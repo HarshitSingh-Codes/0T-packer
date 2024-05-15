@@ -12,12 +12,12 @@ node {
     def templateID = 'lt-0e0cf0cd693670427'
     def asgConfig = 'config.json'
     def sourceVersion = '8'
-
+    def versionDescription = 'default'
     opstree.checkout(url, creds, branch)
 
     opstree.runPacker(packerFileName, amiVersion)
 
-    opstree.updateLaunchTemplate(templateID, sourceVersion)
+    opstree.updateLaunchTemplate(templateID, sourceVersion, versionDescription)
 
     opstree.instanceRefresh(asgConfig)
 }
