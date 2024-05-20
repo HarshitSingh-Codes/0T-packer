@@ -3,7 +3,7 @@
     "Strategy": "Rolling",
     "DesiredConfiguration": {
         "LaunchTemplate": {
-            "LaunchTemplateId": "lt-0e0cf0cd693670427",
+            "LaunchTemplateId": "lt-040f6fff0e3a3b0cd",
             "Version": "$Latest"
         }
     },
