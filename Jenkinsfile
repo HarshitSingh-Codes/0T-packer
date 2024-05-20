@@ -11,7 +11,7 @@ node {
     
     // Packer
     def packerFileName = '.'
-    def amiVersion = '0.2'
+    def amiVersion = '0.3'
     
     // Launch template
     def templateID = 'lt-040f6fff0e3a3b0cd'
@@ -23,9 +23,9 @@ node {
 
     opstree.checkout(url, creds, branch)
 
-    // opstree.runPacker(packerFileName, amiVersion)
+    opstree.runPacker(packerFileName, amiVersion)
 
     opstree.updateLaunchTemplate(templateID, sourceVersion, versionDescription)
 
-    // opstree.instanceRefresh(asgConfig)
+    opstree.instanceRefresh(asgConfig)
 }
