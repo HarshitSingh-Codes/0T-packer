@@ -11,7 +11,7 @@ node {
     
     // Packer
     def packerFileName = '.'
-    def amiVersion = '0.3'
+    def amiVersion = '0.4'
     
     // Launch template
     def templateID = 'lt-040f6fff0e3a3b0cd'
