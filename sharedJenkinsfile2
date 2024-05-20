@@ -3,16 +3,21 @@
 def opstree = new org.opstree.template.nginx.nginx()
 
 node {
-    
+
+    // GIT
     def url = 'https://github.com/HarshitSingh-Codes/0T-packer.git'
     def creds = 'github-token'
     def branch = 'nginxV1.0'
+    // Packer
     def packerFileName = '.'
     def amiVersion = '0.8'
+    // Launch template
     def templateID = 'lt-0e0cf0cd693670427'
-    def asgConfig = 'config.json'
     def sourceVersion = '8'
     def versionDescription = 'default'
+    // ASG config file
+    def asgConfig = 'config.json'
+
     opstree.checkout(url, creds, branch)
 
     opstree.runPacker(packerFileName, amiVersion)
