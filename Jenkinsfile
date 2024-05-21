@@ -16,11 +16,6 @@ node {
     // def packerFileName = '.'
     // def amiVersion = '0.4'
     
-    // Launch template
-    // def updateLaunchTemplate = true
-    // def templateID = 'lt-040f6fff0e3a3b0cd'
-    // def sourceVersion = '1'
-    // def versionDescription = 'default'
     
     // ASG config file
     // def startInstanceRefresh = true
@@ -28,18 +23,24 @@ node {
 
     startDeployment.call([
         // GIT
-        gitCheckout : true, 
+        gitCheckout : false, 
         url : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
         creds : 'github-token',
         branch : 'nginxV1.0',
 
         // Packer
-        runPacker : true,
+        runPacker : false,
         goldenAmiName : 'golden-ami',
         amiName : 'nginx',
         amiVersion : '0.5',
         rootFolderName : 'nginx',
         packerFileName : 'nginx.pkr.hcl'
+
+        // Launch template
+        updateLaunchTemplate : true
+        templateID : 'lt-040f6fff0e3a3b0cd'
+        sourceVersion : '1'
+        versionDescription : 'ami via packer and jenkins'
 
         ])
 }
