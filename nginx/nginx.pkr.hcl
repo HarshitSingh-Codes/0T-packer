@@ -24,7 +24,7 @@ variable "image_version" {
 
 variable "filePath" {
   type    = string
-  default = "./index1.html"
+  default = "index1.html"
 }
 locals {
   # Ids for multiple sets of EC2 instances, merged together
