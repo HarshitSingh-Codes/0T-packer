@@ -37,7 +37,7 @@ node {
         runPacker : true,
         goldenAmiName : 'golden-ami',
         amiName : 'nginx',
-        amiVersion : '0.5'
+        amiVersion : '0.5',
         rootFolderName : 'nginx',
         packerFileName : 'nginx.pkr.hcl'
 
