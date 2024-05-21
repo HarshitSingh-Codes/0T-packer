@@ -1,4 +1,4 @@
-@Library("opstree-shared-library@packer+aws-cli") _
+@Library("opstree-shared-library@infraDeploy") _
 
 def startDeployment = new org.opstree.template.deployInfra.deployInfra()
 
