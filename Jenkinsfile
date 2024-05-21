@@ -31,6 +31,15 @@ node {
         gitCheckout : true, 
         url : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
         creds : 'github-token',
-        branch : 'nginxV1.0'
+        branch : 'nginxV1.0',
+
+        // Packer
+        runPacker : true,
+        goldenAmiName : 'golden-ami',
+        amiName : 'nginx',
+        amiVersion : '0.5'
+        rootFolderName : 'nginx',
+        packerFileName : 'nginx.pkr.hcl'
+
         ])
 }
