@@ -1,4 +1,4 @@
-@Library("opstree-shared-library@infraDeploy") _
+@Library("opstree-shared-library@harshit/rolling-shared-library") _
 
 def startDeployment = new org.opstree.template.deployInfra.deployInfra()
 
