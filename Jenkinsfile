@@ -34,7 +34,7 @@ node {
         amiName : 'nginx',
         amiVersion : '0.5',
         rootFolderName : 'nginx',
-        packerFileName : 'nginx.pkr.hcl'
+        packerFileName : 'nginx.pkr.hcl',
 
         // Launch template
         updateLaunchTemplate : true,
