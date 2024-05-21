@@ -37,11 +37,11 @@ node {
         updateLaunchTemplate : false,
         templateID : 'lt-040f6fff0e3a3b0cd',
         sourceVersion : '1',
-        versionDescription : 'ami via packer and jenkins'
+        versionDescription : 'ami via packer and jenkins',
 
         // ASG
-        startInstanceRefresh : true
-        asgConfigRootdir : '.'
+        startInstanceRefresh : true,
+        asgConfigRootdir : '.',
         asgConfigFilename : 'config.json'
 
         ])
