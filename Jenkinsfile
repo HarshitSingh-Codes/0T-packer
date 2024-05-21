@@ -17,9 +17,6 @@ node {
     // def amiVersion = '0.4'
     
     
-    // ASG config file
-    // def startInstanceRefresh = true
-    // def asgConfig = 'config.json'
 
     startDeployment.call([
         // GIT
@@ -41,6 +38,11 @@ node {
         templateID : 'lt-040f6fff0e3a3b0cd',
         sourceVersion : '1',
         versionDescription : 'ami via packer and jenkins'
+
+        // ASG
+        startInstanceRefresh : true
+        asgConfigRootdir : '.'
+        asgConfigFilename : 'config.json'
 
         ])
 }
