@@ -3,21 +3,6 @@
 def startDeployment = new org.opstree.template.deployInfra.deployInfra()
 
 node {
-
-    // GIT
-    // def gitCheckout = true
-    // def url = 'https://github.com/HarshitSingh-Codes/0T-packer.git'
-    // def creds = 'github-token'
-    // def branch = 'nginxV1.0'
-
-    // Packer
-    // def runPacker = true
-    // def rootFolderNAme = ''
-    // def packerFileName = '.'
-    // def amiVersion = '0.4'
-    
-    
-
     startDeployment.call([
         // GIT
         gitCheckout : false, 
