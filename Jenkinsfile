@@ -25,7 +25,7 @@ node {
         versionDescription : 'ami via packer and jenkins',
 
         // ASG
-        startInstanceRefresh : true,
+        startInstanceRefresh : false,
         asgConfigRootdir : '.',
         asgConfigFilename : 'config.json'
 
