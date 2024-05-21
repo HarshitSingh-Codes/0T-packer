@@ -34,7 +34,7 @@ node {
         packerFileName : 'nginx.pkr.hcl',
 
         // Launch template
-        updateLaunchTemplate : true,
+        updateLaunchTemplate : false,
         templateID : 'lt-040f6fff0e3a3b0cd',
         sourceVersion : '1',
         versionDescription : 'ami via packer and jenkins'
