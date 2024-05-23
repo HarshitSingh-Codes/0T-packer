@@ -32,17 +32,6 @@ build {
   sources = [
     "source.amazon-ebs.nginx-ami"
   ]
-  // provisioner "shell" {
-  //   inline = [
-  //     "sudo chown -R ubuntu:ubuntu /var/www/html/",
-  //   ]
-  // }
-
-  // provisioner "file" {
-  //   source      = var.filePath
-  //   destination = "/var/www/html/index.nginx-debian.html"
-
-  // }
 
   provisioner "shell" {
   script       = "script.sh"
@@ -50,15 +39,6 @@ build {
   timeout      = "120s"
 }
 
-  // provisioner "shell" {
-
-  //   inline = [
-  //     "sudo chown -R root:root /var/www/html/",
-  //     "echo Restart NGINX",
-  //     "sudo systemctl restart nginx.service",
-  //     "sudo systemctl status nginx.service",
-  //   ]
-  // }
   post-processor "manifest" {
     output = "manifest.json"
     strip_path = true
