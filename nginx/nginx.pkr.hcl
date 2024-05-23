@@ -7,29 +7,10 @@ packer {
   }
 }
 
-variable "golden_ami_name" {
-  type    = string
-  default = "golden-ami"
-}
-
-variable "image_name" {
-  type    = string
-  default = "nginx"
-}
-
-variable "image_version" {
-  type    = string
-  default = "1.1"
-}
-
-variable "filePath" {
-  type    = string
-  default = "./index1.html" 
-}
 locals {
-  # Ids for multiple sets of EC2 instances, merged together
   ami_full_name = "${var.image_name}${var.image_version}"
 }
+
 source "amazon-ebs" "nginx-ami" {
   ami_name      = local.ami_full_name 
   instance_type = "t2.micro"
@@ -51,26 +32,33 @@ build {
   sources = [
     "source.amazon-ebs.nginx-ami"
   ]
+  // provisioner "shell" {
+  //   inline = [
+  //     "sudo chown -R ubuntu:ubuntu /var/www/html/",
+  //   ]
+  // }
+
+  // provisioner "file" {
+  //   source      = var.filePath
+  //   destination = "/var/www/html/index.nginx-debian.html"
+
+  // }
+
   provisioner "shell" {
-    inline = [
-      "sudo chown -R ubuntu:ubuntu /var/www/html/",
-    ]
-  }
+  script       = "script.sh"
+  pause_before = "30s"
+  timeout      = "120s"
+}
 
-  provisioner "file" {
-    source      = var.filePath
-    destination = "/var/www/html/index.nginx-debian.html"
+  // provisioner "shell" {
 
-  }
-  provisioner "shell" {
-
-    inline = [
-      "sudo chown -R root:root /var/www/html/",
-      "echo Restart NGINX",
-      "sudo systemctl restart nginx.service",
-      "sudo systemctl status nginx.service",
-    ]
-  }
+  //   inline = [
+  //     "sudo chown -R root:root /var/www/html/",
+  //     "echo Restart NGINX",
+  //     "sudo systemctl restart nginx.service",
+  //     "sudo systemctl status nginx.service",
+  //   ]
+  // }
   post-processor "manifest" {
     output = "manifest.json"
     strip_path = true
