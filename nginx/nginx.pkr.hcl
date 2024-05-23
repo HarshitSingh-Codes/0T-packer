@@ -19,7 +19,7 @@ variable "image_name" {
 
 variable "image_version" {
   type    = string
-  default = "0.1"
+  default = "1.1"
 }
 
 variable "filePath" {
