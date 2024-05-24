@@ -4,14 +4,13 @@ def deployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImmuta
 
 node {
 
-    // def gitParams = [ url : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
-    //     creds : 'github-token',
-    //     branch : 'aws-Immutable-Infra' ]
-    // deployment.gitCheckout(gitParams)
-
-    def config = readYaml file: './config.yaml'
-
-    deployment.gitCheckout(config.git)
+    cleanWs()
+    stage('GIT Checkout'){
+        gitClone.repoCloning(        
+            REPO_URL : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
+            REPO_CREDS : 'github-token',
+            REPO_BRANCH : 'aws-Immutable-Infra')
+    }    
     
-    deployment.runPacker(config.packer)
+    // deployment.runPacker(config.packer)
 }
