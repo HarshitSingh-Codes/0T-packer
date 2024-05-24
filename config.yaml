@@ -1,9 +1,3 @@
-git:
-  checkout: true
-  url: 'https://github.com/HarshitSingh-Codes/0T-packer.git'
-  creds: 'github-token'
-  branch: 'aws-Immutable-Infra'
-
 packer:
   enable: true
   config_dir: 'packer'

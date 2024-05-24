@@ -10,6 +10,6 @@ node {
             REPO_CREDS : 'github-token',
             REPO_BRANCH : 'aws-Immutable-Infra')
 
-    def config = readYaml file: './config.yaml'
+    def config = readYaml file: './config.yaml' 
     deployment.runPacker(config.packer)
 }
