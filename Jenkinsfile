@@ -1,16 +1,19 @@
 @Library("opstree-shared-library@immutable-infra") _
 
-import groovy.json.JsonSlurper
-def config = readYaml file: './config.yaml'
+// import groovy.json.JsonSlurper
+// def config = readYaml file: './config.yaml'
 
 def deployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImmutableInfraAppDeployer()
 
 node {
+
+    def gitParams = [
+        url : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
+        creds : 'github-token',
+        branch : 'nginxV1.0']
+    deployment.gitCheckout(git: gitParams)
+
     // def config = readYaml file: './config.yaml'
-
-    // def deploymentConfig = load 'config.yaml'
-    def gitParams = config.git
-    def packerParams = config.packer
-    deployment.call(git: gitParams, packer: packerParams)
+    // def packerParams = config.packer
+    // deployment.call(git: gitParams, packer: packerParams)
 }
-

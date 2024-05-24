@@ -5,6 +5,6 @@ git:
   branch: 'nginxV1.0'
 
 packer:
-  run: true
+  enable: true
   config_dir: 'packer'
   config_file: '.'
