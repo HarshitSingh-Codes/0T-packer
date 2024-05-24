@@ -7,6 +7,6 @@ node {
     config = readProperties(file: 'config2.yaml')
     cleanWs()
 
-    deployment.gitCheckout(config.git)
-    deployment.runPacker(config.packer)
+    gitUtils(config.git)
+    // deployment.runPacker(config.packer)
 }
