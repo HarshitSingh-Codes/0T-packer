@@ -9,7 +9,7 @@ node {
 
     def gitParams = [ url : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
         creds : 'github-token',
-        branch : 'nginxV1.0' ]
+        branch : 'aws-Immutable-Infra' ]
     deployment.gitCheckout(gitParams)
 
     // def config = readYaml file: './config.yaml'
