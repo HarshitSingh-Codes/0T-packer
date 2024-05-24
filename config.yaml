@@ -1,0 +1,10 @@
+git:
+  checkout: true
+  url: 'https://github.com/HarshitSingh-Codes/0T-packer.git'
+  creds: 'github-token'
+  branch: 'nginxV1.0'
+
+packer:
+  run: true
+  config_dir: 'packer'
+  config_file: '.'
