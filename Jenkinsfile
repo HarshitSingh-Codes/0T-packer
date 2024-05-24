@@ -9,5 +9,7 @@ node {
             REPO_URL : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
             REPO_CREDS : 'github-token',
             REPO_BRANCH : 'aws-Immutable-Infra')
-    // deployment.runPacker(config.packer)
+
+    def config = readYaml file: './config.yaml'
+    deployment.runPacker(config.packer)
 }
