@@ -12,7 +12,8 @@ node {
         branch : 'aws-Immutable-Infra' ]
     deployment.gitCheckout(gitParams)
 
-    // def config = readYaml file: './config.yaml'
+    def config = readYaml file: './config.yaml'
     // def packerParams = config.packer
-    // deployment.call(git: gitParams, packer: packerParams)
+    
+    deployment.runPacker(config.packer)
 }
