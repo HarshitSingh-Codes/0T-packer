@@ -10,8 +10,9 @@ node {
 
 }
 pipeline{
-    
+    stages{
     deployment.gitCheckout(config.git)
     // def config = readYaml file: './config.yaml' 
     deployment.runPacker(config.packer)
+    }
 }
