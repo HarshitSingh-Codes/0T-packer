@@ -1,12 +1,14 @@
 @Library("opstree-shared-library@immutable-infra") _
 
-def deployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImmutableInfraAppDeployer()
+// def deployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImmutableInfraAppDeployer()
 
 node {
     checkout scm  
     config = readProperties( file: 'config2.yaml')
     cleanWs()
-    
+
+    def deployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImmutableInfraAppDeployer()
+
     deployment.gitCheckout(config.git)
     // def config = readYaml file: './config.yaml' 
     deployment.runPacker(config.packer)
