@@ -10,7 +10,7 @@ node {
     def gitParams = [ url : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
         creds : 'github-token',
         branch : 'nginxV1.0' ]
-    deployment.gitCheckout(${gitParams})
+    deployment.gitCheckout(gitParams)
 
     // def config = readYaml file: './config.yaml'
     // def packerParams = config.packer
