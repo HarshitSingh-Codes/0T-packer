@@ -14,7 +14,7 @@ locals {
 source "amazon-ebs" "nginx-ami" {
   ami_name      = local.ami_full_name 
   instance_type = "t2.micro"
-  region        = "us-east-2"
+  region        = "us-east-1"
   source_ami_filter {
     filters = {
       name                = var.golden_ami_name
@@ -22,7 +22,7 @@ source "amazon-ebs" "nginx-ami" {
       virtualization-type = "hvm"
     }
     most_recent = true
-    owners      = ["975049907153"]
+    owners      = ["905418400291"]
   }
   ssh_username = "ubuntu"
 }
