@@ -21,8 +21,6 @@ source "amazon-ebs" "frontend-app" {
   ami_name      = "golden-ami"
   instance_type = "t2.micro"
   region        = "us-east-1"
-  // subnet_id = "subnet-12345678"
-  // vpc_id = "vpc-12345678"
   source_ami_filter {
     filters = {
       name                = "ubuntu/images/*ubuntu-jammy-22.04-amd64-server-*"
