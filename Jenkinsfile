@@ -5,7 +5,7 @@ def deployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImmuta
 node {
 
     cleanWs()
-    gitUtils.gitCheckout(        
+    deployment.gitCheckout(        
             REPO_URL : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
             REPO_CREDS : 'github-token',
             REPO_BRANCH : 'aws-Immutable-Infra')
