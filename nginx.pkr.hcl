@@ -51,9 +51,4 @@ build {
     ]
   }
 
-  // provisioner "file" {
-  //   destination = "/home/ubuntu/"
-  //   source      = "/home/harshit/Frontend"
-  // }
-
 }
