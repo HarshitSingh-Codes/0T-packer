@@ -46,7 +46,7 @@ build {
     inline = [
       "echo Installing Pre-requisites",
       "sudo apt-get update",
-      "sudo apt install openjdk-17-jre-headless -y",
+      "sudo apt-get install openjdk-17-jre-headless -y",
       "sudo apt-get install nginx -y",
     ]
   }
