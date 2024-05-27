@@ -5,11 +5,11 @@ def deployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImmuta
 node {
 
     cleanWs()
-
-    def gitParams = [ url : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
-        creds : 'github-token',
-        branch : 'aws-Immutable-Infra' ]
-    deployment.gitCheckout(gitParams)
+    checkout scm
+    // def gitParams = [ url : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
+    //     creds : 'github-token',
+    //     branch : 'aws-Immutable-Infra' ]
+    // deployment.gitCheckout(gitParams)
 
     def config = readYaml file: './config.yaml' 
     deployment.runPacker(config.packer)
