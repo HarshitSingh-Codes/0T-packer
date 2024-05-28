@@ -6,10 +6,21 @@ packer {
     }
   }
 }
+function clean_ami_name(name) {
+  // Replace invalid characters with underscores
+  name = replace(name, "[^a-zA-Z0-9().-_]", "_")
 
+  // Remove leading and trailing underscores
+  name = trim(name, "_")
+
+  // Ensure the name is at most 128 characters long
+  name = substr(name, 0, 128)
+
+  return name
+}
 locals {
   ami_base_name = "${var.image_name}_${var.image_version}"
-  ami_full_name = "${local.ami_base_name}_${timestamp()}"
+  ami_full_name = "${clean_ami_name(local.ami_base_name)}-${timestamp()}"
 }
 
 source "amazon-ebs" "nginx-ami" {
