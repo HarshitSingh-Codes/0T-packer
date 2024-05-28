@@ -1,0 +1,39 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "name": "nginx-ami",
+      "ami_name": "{{user `image_name`}}{{user `image_version`}}",
+      "instance_type": "t2.micro",
+      "region": "us-east-1",
+      "source_ami_filter": {
+        "filters": {
+          "name": "{{user `golden_ami_name` }}",
+          "root-device-type": "ebs",
+          "virtualization-type": "hvm"
+        },
+        "most_recent": true,
+        "owners": ["905418400291"]
+      },
+      "ssh_username": "ubuntu"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "script.sh",
+      "pause_before": "30s",
+      "timeout": "120s"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "output.json",
+      "strip_path": true,
+      "custom_data": {
+      "ami_name": "{{user `image_name`}}{{user `image_version`}}"
+      }
+    }
+  ]
+}
