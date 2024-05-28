@@ -1,0 +1,50 @@
+{
+    "packer": {
+      "required_plugins": {
+        "amazon": {
+          "version": ">= 1.2.8",
+          "source": "github.com/hashicorp/amazon"
+        }
+      }
+    },
+    "locals": {
+      "ami_full_name": "{{ .Vars.image_name }}-{{ .Vars.image_version }}"
+    },
+    "builders": [
+      {
+        "type": "amazon-ebs",
+        "name": "nginx-ami",
+        "ami_name": "{{ .Locals.ami_full_name }}",
+        "instance_type": "t2.micro",
+        "region": "us-east-1",
+        "source_ami_filter": {
+          "filters": {
+            "name": "{{ .Vars.golden_ami_name }}",
+            "root-device-type": "ebs",
+            "virtualization-type": "hvm"
+          },
+          "most_recent": true,
+          "owners": ["905418400291"]
+        },
+        "ssh_username": "ubuntu"
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "shell",
+        "script": "script.sh",
+        "pause_before": "30s",
+        "timeout": "120s"
+      }
+    ],
+    "post-processors": [
+      {
+        "type": "manifest",
+        "output": "output.json",
+        "strip_path": true,
+        "custom_data": {
+          "ami_name": "{{ .Locals.ami_full_name }}{{timestamp}}"
+        }
+      }
+    ]
+  }
