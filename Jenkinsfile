@@ -1,17 +1,12 @@
-@Library("opstree-shared-library@immutable-infra") _
+@Library("opstree-shared-library@packer-ami") _
 
 def deployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImmutableInfraAppDeployer()
 
 node {
 
-    cleanWs()
     checkout scm
-    // def gitParams = [ url : 'https://github.com/HarshitSingh-Codes/0T-packer.git',
-    //     creds : 'github-token',
-    //     branch : 'aws-Immutable-Infra' ]
-    // deployment.gitCheckout(gitParams)
 
     def config = readYaml file: './config.yaml' 
     deployment.runPacker(config.packer)
-    deployment.updateLaunchTemplate(config.launch_template)
+    // deployment.updateLaunchTemplate(config.launch_template)
 }

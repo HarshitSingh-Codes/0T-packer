@@ -1,15 +1,8 @@
 packer:
-  enable: true
+  enable: false
   config_dir: 'packer'
   # filetype: 'hcl'
   # config_file: '.'
   filetype: 'json'
   config_file: 'main.json'
   var_file: 'variables.json'
-
-launch_template:
-  enable: true
-  id: 'lt-053f71a5923b88504'
-  manifest_dir: '{{ .packer.config_dir }}'
-  manifest_name: 'manifest.json'
-  sourceVersion: ''

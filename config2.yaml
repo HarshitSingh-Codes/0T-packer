@@ -7,3 +7,11 @@ packer:
   enable: true
   config_dir: 'packer'
   config_file: '.'
+
+
+launch_template:
+  enable: true
+  id: 'lt-053f71a5923b88504'
+  manifest_dir: '{{ .packer.config_dir }}'
+  manifest_name: 'manifest.json'
+  sourceVersion: ''
