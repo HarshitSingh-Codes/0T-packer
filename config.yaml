@@ -1,4 +1,5 @@
 packer:
   enable: true
+  filetype: 'hcl'
   config_dir: 'packer'
   config_file: '.'
