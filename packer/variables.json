@@ -1,6 +1,5 @@
 {
-    "variables": {
-      "golden_ami_name": "golden-ami",
-      "image_name": "nginx",
-      "image_version": "2.0"    }
-  }
+   "golden_ami_name": "golden-ami",
+   "image_name": "nginx",
+   "image_version": "2.0"   
+}
