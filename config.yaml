@@ -4,5 +4,5 @@ packer:
   # filetype: 'hcl'
   # config_file: '.'
   filetype: 'json'
-  config_file: 'packer.json'
-  var_file: 'variables.json'
+  config_file: 'main.pkr.json'
+  var_file: 'variables.pkr.json'
