@@ -1,5 +1,8 @@
 packer:
   enable: true
-  filetype: 'json'
   config_dir: 'packer'
-  config_file: '.'
+  # filetype: 'hcl'
+  # config_file: '.'
+  filetype: 'json'
+  config_file: 'packer.json'
+  var_file: 'variables.json'
