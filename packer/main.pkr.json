@@ -8,7 +8,7 @@
       }
     },
     "locals": {
-      "ami_full_name": "{{ .Vars.image_name }}-{{ .Vars.image_version }}"
+      "ami_full_name": "{{ .Vars.image_name }}{{ .Vars.image_version }}"
     },
     "builders": [
       {
@@ -43,7 +43,7 @@
         "output": "output.json",
         "strip_path": true,
         "custom_data": {
-          "ami_name": "{{ .Locals.ami_full_name }}{{timestamp}}"
+          "ami_name": "{{ .Locals.ami_full_name }}"
         }
       }
     ]
