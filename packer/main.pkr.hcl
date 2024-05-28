@@ -8,7 +8,8 @@ packer {
 }
 
 locals {
-  ami_full_name = "${var.image_name}${var.image_version}${timestamp()}"
+  // ami_full_name = "${var.image_name}${var.image_version}${timestamp()}"
+  ami_full_name = "${var.image_name}${var.image_version}"
 }
 
 source "amazon-ebs" "nginx-ami" {
