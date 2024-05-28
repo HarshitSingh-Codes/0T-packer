@@ -13,4 +13,5 @@ node {
 
     def config = readYaml file: './config.yaml' 
     deployment.runPacker(config.packer)
+    deployment.updateLaunchTemplate(config.launch_template)
 }
