@@ -1,4 +1,4 @@
-@Library("opstree-shared-library@immutable-infra") _
+@Library("opstree-shared-library@packer-ami") _
 
 def appDeployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImmutableInfraAppDeployer()
 
@@ -6,5 +6,5 @@ node {
 
     checkout scm
     
-    appDeployment.template(dir:".", file:"config.yaml")
+    appDeployment.call(dir:".", file:"config.yaml")
 }
