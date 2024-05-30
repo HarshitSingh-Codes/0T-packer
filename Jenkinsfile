@@ -1,12 +1,13 @@
-@Library("opstree-shared-library@packer-ami") _
+@Library("opstree-shared-library@immutable-infra") _
 
-def deployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImmutableInfraAppDeployer()
+def appDeployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImmutableInfraAppDeployer()
 
 node {
 
     checkout scm
+    
+    def config_dir = '.' 
+    def config_filename =  'config.yaml'
 
-    def config = readYaml file: './config.yaml' 
-    deployment.runPacker(config.packer)
-    // deployment.updateLaunchTemplate(config.launch_template)
+    appDeployment.call(dir : ${config_dir}, file : ${config_filename})
 }
