@@ -6,5 +6,5 @@ node {
 
     checkout scm
     
-    appDeployment.call(dir:".", file:"config.yaml")
+    appDeployment.template(dir:".", file:"config.yaml")
 }
