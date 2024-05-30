@@ -1,6 +1,6 @@
 packer:
   create_ami: true
-  config_dir: 'packer'
+  config_dir: 'packerr'
   # filetype: 'hcl'
   # config_file: '.'
   filetype: 'json'
