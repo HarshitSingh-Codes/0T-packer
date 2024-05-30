@@ -6,8 +6,5 @@ node {
 
     checkout scm
     
-    def config_dir = '.' 
-    def config_filename =  'config.yaml'
-
-    appDeployment.call(dir : "${config_dir}", file : "${config_filename}")
+    appDeployment.call(dir:".", file:"config.yaml")
 }
