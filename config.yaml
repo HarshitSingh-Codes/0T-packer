@@ -1,5 +1,5 @@
 packer:
-  create_ami: false
+  create_ami: true
   config_dir: 'packer'
   # filetype: 'hcl'
   # config_file: '.'
