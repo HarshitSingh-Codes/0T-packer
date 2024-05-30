@@ -4,7 +4,7 @@ def appDeployment = new org.opstree.template.awsImmutableInfraAppDeployer.awsImm
 
 node {
 
-    checkout scm
+    // checkout scm
     
     appDeployment.call(dir:".", file:"config.yaml")
 }
