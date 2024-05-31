@@ -5,4 +5,4 @@ packer:
   # config_file: '.'
   filetype: 'json'
   config_file: 'main.json'
-  var_file: 'variables.json'
+  var_file: 'variables.jso'
