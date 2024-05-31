@@ -1,8 +1,8 @@
 packer:
   create_ami: true
   config_dir: 'packer'
-  filetype: 'hcl'
-  config_file: '.'
-  # filetype: 'json'
-  # config_file: 'main.json'
-  # var_file: 'variables.json'
+  # filetype: 'hcl'
+  # config_file: '.'
+  filetype: 'json'
+  config_file: 'main.json'
+  var_file: 'variables.json'
